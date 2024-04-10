@@ -134,7 +134,7 @@ def ready_to_render_dialog(filename):
     cmds.text( label="SUCCESS: \n\n"+ filename + "\n\n is ready to send to the renderfarm. Hit the green button on the Deadline shelf to submit it.\n\n" )
     cmds.formLayout()
     cmds.button( width=100, label='OK', command=('cmds.deleteUI(\"' + window + '\", window=True)') )
-    #cmds.setParent( '..' )
+
     cmds.showWindow( window )
  
     
@@ -163,7 +163,7 @@ def archive_and_copy_to_renderdir():
     elif CURRENT_MAYA_FILE.startswith(RENDERFARM_USER_DIR):
         cmds.workspace(renderfarm_project,openWorkspace=True)
         create_output_dir()
-        #print("SUCCESS: ", CURRENT_MAYA_FILE, " is ready to send to the renderfarm.")
+
         ready_to_render_dialog(CURRENT_MAYA_FILE)
         return
 
@@ -217,8 +217,7 @@ def archive_and_copy_to_renderdir():
     #Done
     cmds.file(save=True)
     ready_to_render_dialog(render_filepath)
-    
-    #print("SUCCESS: ", render_filepath, " is ready to send to the renderfarm.")
+
 
 
 # Verifies that the user is sending the render from an approved lab, and then copies the necessary files onto the render network drive.   
